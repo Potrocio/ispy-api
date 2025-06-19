@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "users" ALTER COLUMN "game_started" SET DEFAULT CURRENT_TIMESTAMP;

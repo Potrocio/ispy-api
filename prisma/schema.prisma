@@ -16,7 +16,7 @@ datasource db {
 model User {
   id          Int      @id @default(autoincrement())
   username    String   @unique
-  gameStarted DateTime @map("game_started")
+  gameStarted DateTime @default(now()) @map("game_started")
   score       Int?
 
   @@map("users")
