@@ -1,15 +1,16 @@
 const { PrismaClient } = require('@prisma/client')
 
+const prisma = new PrismaClient();
+
 async function getUserScores(req, res) {
     try {
-        const users = await Prisma.user.findMany({
+        const users = await prisma.user.findMany({
             where: {
                 score: {
                     not: null
                 }
             }
         })
-
 
         return res.status(200).json({ users })
 
@@ -30,11 +31,13 @@ async function createUser(req, res) {
             })
         }
 
-        const user = await Prisma.user.create({
+        const user = await prisma.user.create({
             data: {
                 username: username
             }
         })
+
+
 
         return res.status(201).json({ user })
 
@@ -59,7 +62,7 @@ async function submitUserScore(req, res) {
             })
         }
 
-        const user = await Prisma.user.findUnique({
+        const user = await prisma.user.findUnique({
             where: {
                 id: userId
             }
@@ -71,11 +74,15 @@ async function submitUserScore(req, res) {
             });
         }
 
+        if (!user.gameStarted) {
+            return res.status(400).json({ error: "Game has not started for this user" });
+        }
+
         const gameStarted = user.gameStarted.getTime();
         const gameEnded = Date.now()
         const scoreInSeconds = Math.floor((gameEnded - gameStarted) / 1000)
 
-        const updatedUser = await Prisma.user.update({
+        const updatedUser = await prisma.user.update({
             where: {
                 id: userId
             },

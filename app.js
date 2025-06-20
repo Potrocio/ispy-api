@@ -1,8 +1,8 @@
 const express = require('express')
 require('dotenv').config()
 const cors = require('cors')
-import usersRouter from './routes/usersRouter';
-import targetsRouter from './routes/targetsRouter';
+const usersRouter = require("./routes/usersRouter")
+const targetsRouter = require("./routes/targetsRouter")
 
 const app = express();
 
