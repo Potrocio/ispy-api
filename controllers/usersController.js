@@ -12,7 +12,7 @@ async function getUserScores(req, res) {
             }
         })
 
-        return res.status(200).json({ users })
+        return res.status(200).json(users)
 
     } catch (error) {
         console.log(error)
@@ -39,7 +39,7 @@ async function createUser(req, res) {
 
 
 
-        return res.status(201).json({ user })
+        return res.status(201).json(user)
 
     } catch (error) {
         console.log(error)
@@ -91,7 +91,7 @@ async function submitUserScore(req, res) {
             }
         })
 
-        return res.status(200).json({ updatedUser })
+        return res.status(200).json(updatedUser)
 
     } catch (error) {
         console.log(error)
