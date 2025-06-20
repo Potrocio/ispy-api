@@ -23,7 +23,7 @@ async function checkIfTargetFound(req, res) {
         if (x <= target.xMax && x >= target.xMin) {
             if (y <= target.yMax && y >= target.yMin) {
                 return res.status(200).json({
-                    match: true
+                    match: target
                 })
             }
         }
