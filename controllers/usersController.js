@@ -30,6 +30,18 @@ async function createUser(req, res) {
             })
         }
 
+        const userExists = await prisma.user.findUnique({
+            where: {
+                username: username
+            }
+        })
+
+        if (userExists) {
+            return res.status(409).json({
+                error: "Username already exists"
+            })
+        }
+
         const user = await prisma.user.create({
             data: {
                 username: username
@@ -43,7 +55,7 @@ async function createUser(req, res) {
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            error: "Internal server error"
+            error: error
         })
     }
 }
