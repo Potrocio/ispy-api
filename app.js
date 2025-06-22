@@ -8,7 +8,7 @@ const app = express();
 
 //cors will be set to my local environment, but I can change it later
 app.use(cors({
-    origin: 'https://photo-tagging-app-rho.vercel.app/',
+    origin: 'https://photo-tagging-app-rho.vercel.app',
     credentials: true
 }))
 app.use(express.urlencoded({ extended: true }))
