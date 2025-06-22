@@ -11,9 +11,3 @@ A backend server for the I Spy game. Handles game data, player scores, and inter
 - Node.js
 - Express
 - PostgreSQL
-
-### Installation
-```bash
-git clone https://github.com/your-username/i-spy-api.git
-cd i-spy-api
-npm install
